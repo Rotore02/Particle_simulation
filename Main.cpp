@@ -35,6 +35,8 @@ void Simulation() {
   std::vector<Particle> Daughters;
   std::vector<Particle> Generated;
 
+  TFile* Simulation = new TFile{"Simulation.root", "RECREATE"};
+
   TH1F* h1 = new TH1F{"h1", "Generated particles distribution", 7, 0, 7};
   TH2F* h2 = new TH2F{
       "h2", "Generated angles distribution", 2000, 0, 2 * M_PI, 1000, 0, M_PI};
@@ -180,7 +182,6 @@ void Simulation() {
     Daughters.clear();
   }
 
-  TFile* Simulation = new TFile{"Simulation.root", "RECREATE"};
   Simulation->Write();
   Simulation->Close();
 

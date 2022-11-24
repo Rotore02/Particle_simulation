@@ -22,8 +22,8 @@ void SetStyle(std::vector<TH1*>& Histos) {
                        "Generated trasverse impulse (GeV)",
                        "Particles energy (GeV)",
                        "Invariant mass (GeV/(c^2))"};
-  int i = 0;
-  for (; i < 5; i++) {
+
+  for (int i = 0; i < 5; i++) {
     if (i == 0) {
       Histos[i]->GetXaxis()->SetTitle(Labels[0]);
       Histos[i]->GetYaxis()->SetTitle("Occurrencies");
@@ -33,32 +33,33 @@ void SetStyle(std::vector<TH1*>& Histos) {
       Histos[i]->SetFillColor(30);
       Histos[i]->SetLineStyle(1);
       Histos[i]->SetLineColor(32);
-    }
-    if (i == 1) {
-      Histos[i]->GetXaxis()->SetTitle(Labels[1]);
-      Histos[i]->GetYaxis()->SetTitle(Labels[2]);
-      Histos[i]->GetZaxis()->SetTitle("Occurrencies");
-      Histos[i]->GetXaxis()->SetTitleOffset(1.6);
-      Histos[i]->GetYaxis()->SetTitleOffset(1.6);
-      Histos[i]->GetZaxis()->SetTitleOffset(0.8);
-      Histos[i]->SetMarkerStyle(1);
-      Histos[i]->SetFillColor(30);
-      Histos[i]->SetLineStyle(1);
-      Histos[i]->SetLineColor(32);
     } else {
-      if (i < 5) {
-        Histos[i]->GetXaxis()->SetTitle(Labels[i + 1]);
-        Histos[i]->GetYaxis()->SetTitle("Occurrencies");
-        Histos[i]->GetXaxis()->SetTitleOffset(1);
-        Histos[i]->GetYaxis()->SetTitleOffset(0.6);
+      if (i == 1) {
+        Histos[i]->GetXaxis()->SetTitle(Labels[1]);
+        Histos[i]->GetYaxis()->SetTitle(Labels[2]);
+        Histos[i]->GetZaxis()->SetTitle("Occurrencies");
+        Histos[i]->GetXaxis()->SetTitleOffset(1.6);
+        Histos[i]->GetYaxis()->SetTitleOffset(1.6);
+        Histos[i]->GetZaxis()->SetTitleOffset(0.8);
         Histos[i]->SetMarkerStyle(1);
         Histos[i]->SetFillColor(30);
         Histos[i]->SetLineStyle(1);
         Histos[i]->SetLineColor(32);
+      } else {
+        if (i < 5) {
+          Histos[i]->GetXaxis()->SetTitle(Labels[i + 1]);
+          Histos[i]->GetYaxis()->SetTitle("Occurrencies");
+          Histos[i]->GetXaxis()->SetTitleOffset(1);
+          Histos[i]->GetYaxis()->SetTitleOffset(0.6);
+          Histos[i]->SetMarkerStyle(1);
+          Histos[i]->SetFillColor(30);
+          Histos[i]->SetLineStyle(1);
+          Histos[i]->SetLineColor(32);
+        }
       }
     }
   }
-  for (; i < 11; i++) {
+  for (int i = 5; i < 11; i++) {
     Histos[i]->GetXaxis()->SetTitle(Labels[6]);
     Histos[i]->GetYaxis()->SetTitle("Occurrencies");
     Histos[i]->GetXaxis()->SetTitleOffset(1);
@@ -68,7 +69,7 @@ void SetStyle(std::vector<TH1*>& Histos) {
     Histos[i]->SetLineStyle(1);
     Histos[i]->SetLineColor(37);
   }
-  for (; i < 13; i++) {
+  for (int i = 11; i < 13; i++) {
     Histos[i]->GetXaxis()->SetTitle(Labels[6]);
     Histos[i]->GetYaxis()->SetTitle("Occurrencies");
     Histos[i]->GetXaxis()->SetTitleOffset(1);
@@ -136,19 +137,25 @@ void DataAnalisys() {
   };
 
   if (os.good()) {
+    os << "Histos entries:" << '\n' << '\n';
     for (int i = 0; i < 13; i++) {
-      os << "Histo " << i + 1 << "entries: " << Histos[i]->GetEntries() << '\n'
-         << "-------------------------------" << '\n'
+      os << "Histo " << i + 1 << " entries: " << Histos[i]->GetEntries()
          << '\n';
     }
+    os << '\n'
+       << "-------------------------------" << '\n'
+       << '\n'
+       << "Histo 1 generated particles:" << '\n'
+       << '\n';
     for (int i = 0; i < 7; i++) {
-      os << "Histo 1 generated particles:" << '\n'
-         << n[i] << " generated: " << Histos[0]->GetBinContent(i + 1) << " +- "
-         << Histos[0]->GetBinError(i + 1) << '\n'
-         << "-----------------------------" << '\n'
-         << '\n';
+      os << n[i] << " generated: " << Histos[0]->GetBinContent(i + 1) << " +- "
+         << Histos[0]->GetBinError(i + 1) << '\n';
     }
-    os << "Histo 2 linear fit (A*x + B):" << '\n'
+    os << '\n'
+       << "-----------------------------" << '\n'
+       << '\n'
+       << "Histo 2 linear fit (A*x + B):" << '\n'
+       << '\n'
        << "Proj x:" << '\n'
        << "A = " << LinearXFit->GetParameter(0) << " +- "
        << LinearXFit->GetParError(0) << " , "
@@ -166,9 +173,11 @@ void DataAnalisys() {
        << "ChiSquare/NDF = "
        << (LinearYFit->GetChisquare()) / (LinearYFit->GetNDF()) << " , "
        << "Fit probability: " << LinearYFit->GetProb() << '\n'
+       << '\n'
        << "-------------------------------" << '\n'
        << '\n'
        << "Histo 3 exponential fit (A*exp(B*x)):" << '\n'
+       << '\n'
        << "A = " << ExpFit->GetParameter(0) << " +- " << ExpFit->GetParError(0)
        << " , "
        << "B = " << ExpFit->GetParameter(1) << " +- " << ExpFit->GetParError(1)
@@ -180,9 +189,11 @@ void DataAnalisys() {
        << sqrt((1 / (ExpFit->GetParameter(1) * ExpFit->GetParameter(1))) *
                ExpFit->GetParError(1))
        << '\n'
+       << '\n'
        << "---------------------------------" << '\n'
        << '\n'
        << "Histo 7_8 gaussian fit (A*exp(-0.5*((x-B)/C)*((x-B)/C)):" << '\n'
+       << '\n'
        << "A = " << Gaus1->GetParameter(0) << " +- " << Gaus1->GetParError(0)
        << " , "
        << "B (K* mass) = " << Gaus1->GetParameter(1) << " +- "
@@ -193,7 +204,10 @@ void DataAnalisys() {
        << " , "
        << "Fit Probability = " << Gaus1->GetProb() << '\n'
        << '\n'
+       << "---------------------------------" << '\n'
+       << '\n'
        << "Histo 9_10 gaussian fit (A*exp(-0.5*((x-B)/C)*((x-B)/C)):" << '\n'
+       << '\n'
        << "A = " << Gaus2->GetParameter(0) << " +- " << Gaus2->GetParError(0)
        << " , "
        << "B (K* mass) = " << Gaus1->GetParameter(1) << " +- "
@@ -243,4 +257,8 @@ void DataAnalisys() {
   c2->Print("ParticlesProperties_c2.pdf");
   c3->Print("InvariantMass_c1.pdf");
   c4->Print("InvariantMass_c2.pdf");
+  c3->Print("InvariantMass_c1.C");
+  c4->Print("InvariantMass_c2.C");
+  c3->Print("InvariantMass_c1.root");
+  c4->Print("InvariantMass_c2.root");
 }

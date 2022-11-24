@@ -1,90 +1,61 @@
-Histo 1entries: 1e+07
--------------------------------
+Histos entries:
 
-Histo 2entries: 1e+07
--------------------------------
+Histo 1 entries: 1e+07
+Histo 2 entries: 1e+07
+Histo 3 entries: 1e+07
+Histo 4 entries: 1e+07
+Histo 5 entries: 1e+07
+Histo 6 entries: 5.05012e+08
+Histo 7 entries: 2.52556e+08
+Histo 8 entries: 2.52456e+08
+Histo 9 entries: 2.21247e+07
+Histo 10 entries: 2.20258e+07
+Histo 11 entries: 99627
+Histo 12 entries: 22.3274
+Histo 13 entries: 248.178
 
-Histo 3entries: 1e+07
--------------------------------
-
-Histo 4entries: 1e+07
--------------------------------
-
-Histo 5entries: 1e+07
--------------------------------
-
-Histo 6entries: 5.0502e+08
--------------------------------
-
-Histo 7entries: 2.5258e+08
--------------------------------
-
-Histo 8entries: 2.52441e+08
--------------------------------
-
-Histo 9entries: 2.21721e+07
--------------------------------
-
-Histo 10entries: 2.20861e+07
--------------------------------
-
-Histo 11entries: 99713
--------------------------------
-
-Histo 12entries: 38.7543
--------------------------------
-
-Histo 13entries: 183.086
 -------------------------------
 
 Histo 1 generated particles:
-Pion+ generated: 4.00159e+06 +- 2000.4
------------------------------
 
-Histo 1 generated particles:
-Pion- generated: 3.99894e+06 +- 1999.74
------------------------------
+Pion+ generated: 3.99823e+06 +- 1999.56
+Pion- generated: 4.00244e+06 +- 2000.61
+Kaon+ generated: 500166 +- 707.224
+Kaon- generated: 499431 +- 706.704
+Proton+ generated: 450493 +- 671.188
+Proton- generated: 449614 +- 670.533
+K* generated: 99627 +- 315.637
 
-Histo 1 generated particles:
-Kaon+ generated: 501092 +- 707.879
------------------------------
-
-Histo 1 generated particles:
-Kaon- generated: 500423 +- 707.406
------------------------------
-
-Histo 1 generated particles:
-Proton+ generated: 449269 +- 670.275
------------------------------
-
-Histo 1 generated particles:
-Proton- generated: 448967 +- 670.05
------------------------------
-
-Histo 1 generated particles:
-K* generated: 99713 +- 315.774
 -----------------------------
 
 Histo 2 linear fit (A*x + B):
+
 Proj x:
-A = 0.440729 +- 0.871768 , B = 4997.63 +- 3.16209
-ChiSquare/NDF = 0.988402 , Fit probability: 0.639624
+A = -0.0423172 +- 0.871733 , B = 4999.11 +- 3.16223
+ChiSquare/NDF = 1.02113 , Fit probability: 0.250225
 
 Proj y:
-A = 3.50862 +- 3.48751 , B = 9993.55 +- 6.32443
-ChiSquare/NDF = 0.940483 , Fit probability: 0.910176
+A = -0.474198 +- 3.48798 , B = 9999.79 +- 6.32605
+ChiSquare/NDF = 0.955167 , Fit probability: 0.841799
+
 -------------------------------
 
 Histo 3 exponential fit (A*exp(B*x)):
-A = 30010.3 +- 15.1128 , B = -1.00054 +- 0.000457136
-ChiSquare/NDF = 1.04396 , Fit probability: 0.16283
-Fit mean: -0.999465 +- 0.0213693
+
+A = 30003.2 +- 15.1164 , B = -1.00022 +- 0.000457424
+ChiSquare/NDF = 1.00811 , Fit probability: 0.422465
+Fit mean: -0.999779 +- 0.0213827
+
 ---------------------------------
 
 Histo 7_8 gaussian fit (A*exp(-0.5*((x-B)/C)*((x-B)/C)):
-A = 2272.98 +- 212.208 , B (K* mass) = 0.894041 +- 0.0049392 , C (K* width) = 0.0443021 +- 0.00454327
-ChiSquare/NDF = 1.09631 , Fit Probability = 0.168494
+
+A = 2662.76 +- 212.044 , B (K* mass) = 0.894016 +- 0.00442831 , C (K* width) = 0.0497281 +- 0.00482668
+ChiSquare/NDF = 1.01857 , Fit Probability = 0.414202
+
+---------------------------------
 
 Histo 9_10 gaussian fit (A*exp(-0.5*((x-B)/C)*((x-B)/C)):
-A = 2367.07 +- 80.244 , B (K* mass) = 0.894041 +- 0.00190789 , C (K* width) = 0.0483819 +- 0.00184797
-ChiSquare/NDF = 0.756161 , Fit Probability = 0.99446
+
+A = 2353.31 +- 78.5082 , B (K* mass) = 0.894016 +- 0.00197082 , C (K* width) = 0.0511314 +- 0.0019465
+ChiSquare/NDF = 0.973087 , Fit Probability = 0.589885
